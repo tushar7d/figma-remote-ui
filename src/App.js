@@ -4,7 +4,7 @@ import './App.css';
 function App() {
 
   const onCancel = () => {
-    window.parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
+    window.parent.postMessage({ pluginMessage: { type: "cancel" } },{pluginId:"1241379539591448233"}, "*");
   };
   return (
     <div className="App">
