@@ -1,12 +1,12 @@
-import { Header } from '@revolut/ui-kit'
+import { Header,Box } from '@revolut/ui-kit'
 function Index() {
     
     return (
-        <div>
+        <Box px="s-12"> 
             <Header variant='main'>
   <Header.Title>Home</Header.Title>
 </Header>
-        </div>
+        </Box>
         
     )}
 
