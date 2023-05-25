@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { ThemeProvider, BottomNav, Fixed, Layout } from '@revolut/ui-kit'
 import * as Icons from '@revolut/icons'
-
-
+import Linter from './Linter'
+import Resources from './Resources'
+import Home from './Home'
 function App() {
   const [tab, setTab] = useState('home')
   const onCancel = () => {
@@ -16,11 +17,11 @@ function App() {
         {(() => {
         switch (tab) {
           case 'home':
-            return <>Home</>
+            return <Home />
           case 'linter':
-            return <>Linter</>
+            return <Linter />
           case 'resources':
-            return <>Resources</>
+            return <Resources />
           default:
             throw new Error('Not reachable')
         }
