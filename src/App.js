@@ -1,6 +1,7 @@
 
-import { Provider, Button, Box, Image, Flex } from '@revolut/ui-kit'
 
+import { ThemeProvider, BottomNav, Fixed, Layout } from '@revolut/ui-kit'
+import * as Icons from '@revolut/icons'
 
 
 function App() {
@@ -10,19 +11,17 @@ function App() {
   };
   return (
     <div>
-      <Provider mode='dark' highContrast='auto' >
-        <Flex alignItems={"center"} flexDirection='column'  justifyContent={"center"} height={"100vh"} >
-          <Image
-            src='https://assets.revolut.com/assets/3d-images/3D070.png'
-            alt='Checklist'
-            size={200}
-          />
-
-          <Box p='s-16'>
-            <Button onClick={onCancel} elevated>Close Window</Button>
-          </Box>
-        </Flex>
-      </Provider>
+      <ThemeProvider mode='light'  >
+        <Layout >
+          <Fixed bottom={0} color='white' width={'100vw'} >
+            <BottomNav >
+              <BottomNav.Item useIcon={Icons.Revolut} aria-label='Home' aria-pressed >Home</BottomNav.Item>
+              <BottomNav.Item useIcon={Icons.ArrowRightLeft} aria-label='Payments' > Linter</BottomNav.Item>
+              <BottomNav.Item useIcon={Icons.Apps} aria-label='Hub' hasDot >Resources</BottomNav.Item>
+            </BottomNav>
+          </Fixed>
+        </Layout>
+      </ThemeProvider>
 
 
     </div>
