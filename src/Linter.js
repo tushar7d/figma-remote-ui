@@ -1,22 +1,23 @@
-import { Header, Box, Item, Avatar, ActionButton, MoreBar, VStack } from '@revolut/ui-kit'
+import { Header, Box, Item, Avatar, ActionButton, Checkbox, MoreBar, VStack } from '@revolut/ui-kit'
 import * as Icons from '@revolut/icons'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 function Index() {
 
     const lintSelection = () => {
         window.parent.postMessage({ pluginMessage: { type: "lintSelection" }, pluginId: "1241379539591448233" }, "*");
     };
+    const selectedNode = (id) => {
+        
+        window.parent.postMessage({ pluginMessage: { type: "selectedNode", selected: id }, pluginId: "1241379539591448233" }, "*");
+    };
 
-    let selection = []
+
+    const [hipp, setData] = useState({ data: null })
     useEffect(() => {
         window.onmessage = (msg) => {
-            let m = msg.data.pluginMessage
-            if (m.type == "lintSelection") {
-
-                selection = m.data
-                console.log(selection)
-            }
+            setData({ data: msg.data.pluginMessage.text })
         }
+       
     });
 
     return (
@@ -29,40 +30,24 @@ function Index() {
 
             </Header>
             <MoreBar >
-                <MoreBar.Action onClick={lintSelection} >Lint Selection </MoreBar.Action>
-                <MoreBar.Action >Lint current Page</MoreBar.Action>
-                <MoreBar.Action >Auto Linter</MoreBar.Action>
-
+                <MoreBar.Action onClick={lintSelection} >Refresh</MoreBar.Action>
             </MoreBar>
-            <VStack mt="s-24" space='s-16'>
-                <Item  >
+            <VStack space='s-16' mt="s-16">
+            {hipp.data == null ? "no data" : hipp.data.map((node) => {
+                return (<Item use='label' onClick={() => { selectedNode(node.id) }} >
 
                     <Item.Avatar>
-                        <Avatar useIcon={Icons.Pencil} />
+                        <Avatar />
                     </Item.Avatar>
                     <Item.Content>
-                        <Item.Title  >Missing text style (25)</Item.Title>
-                        <Item.Description>Roboto Regular / 8 (12 line-height)</Item.Description>
+                        <Item.Title id='item-title-clickable'> Missing {node.type} Style</Item.Title>
+                        <Item.Description id='item-description-clickable'>
+                            {node.fontName.family} / {node.fontSize} / {node.fontWeight}
+                        </Item.Description>
+
                     </Item.Content>
-                    <Item.Side>
-                        <ActionButton >Select</ActionButton>
-
-                    </Item.Side>
-                </Item>
-                <Item >
-
-                    <Item.Avatar>
-                        <Avatar useIcon={Icons.Pencil} />
-                    </Item.Avatar>
-                    <Item.Content>
-                        <Item.Title>Missing text style (25)</Item.Title>
-                        <Item.Description>Roboto Regular / 8 (12 line-height)</Item.Description>
-                    </Item.Content>
-                    <Item.Side>
-                        <ActionButton>Select</ActionButton>
-
-                    </Item.Side>
-                </Item>
+                </Item>)
+            })}
             </VStack>
         </Box>
 
