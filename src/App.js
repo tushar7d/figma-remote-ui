@@ -10,6 +10,14 @@ function App() {
   const onCancel = () => {
     window.parent.postMessage({ pluginMessage: { type: "cancel" }, pluginId: "1241379539591448233" }, "*");
   };
+
+  window.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+      // Close plugin when pressing Escape
+      window.parent.postMessage({ pluginMessage: { type: "cancel" }, pluginId: "1241379539591448233" }, "*");
+    }
+  });
+
   return (
     
       <ThemeProvider mode='light'  >
