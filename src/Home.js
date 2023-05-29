@@ -1,31 +1,43 @@
-import { Header,Box } from '@revolut/ui-kit'
-import {  Link } from "react-router-dom";
+import { Header, Box, AppIcon, AppIconGrid, AppsWidget } from "@revolut/ui-kit";
+import { Link } from "react-router-dom";
 
 function Index() {
-    
-    return (
-        <Box px="s-12"> 
-            <Header variant='main'>
-  <Header.Title>Home</Header.Title>
-</Header>
-<nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/generator">Generator</Link>
-          </li>
-          <li>
-            <Link to="/translator">Translator</Link>
-          </li>
-         
-        </ul>
-      </nav>
+  return (
+    <Box px="s-12">
+      <Header variant="main">
+        <Header.Title>Home</Header.Title>
+      </Header>
 
-   
-        </Box>
-        
-    )}
+      <AppsWidget
+      
+      >
+        <Link to="/translator">
+          <AppIcon
+            key={1}
+            image={{
+              default: `https://assets.revolut.com/assets/hub-icons/Payday.png`,
+              
+            }}
+            
+          >
+            <AppIcon.Title> Pseudo Translator</AppIcon.Title>
+          </AppIcon>
+        </Link>
+        <Link to="/generator">
+          <AppIcon
+            key={2}
+            image={{
+              default: `https://assets.revolut.com/assets/hub-icons/Payday.png`,
+             
+            }}
+            
+          >
+            <AppIcon.Title>Cover Generator</AppIcon.Title>
+          </AppIcon>
+        </Link>
+      </AppsWidget>
+    </Box>
+  );
+}
 
-export default Index
+export default Index;

@@ -1,5 +1,5 @@
-import { Box, ActionWidget, ActionButton, Avatar } from "@revolut/ui-kit";
-import {  } from '@revolut/ui-kit'
+import { Box, ActionWidget, ActionButton, Avatar,  } from "@revolut/ui-kit";
+import * as Icons from '@revolut/icons'
 import SubAppHeader from "../Components/SubAppHeader";
 
 function Index() {
@@ -17,8 +17,8 @@ function Index() {
     <Icons.InfoOutline color='pink' />
   </ActionWidget.Avatar>
   <ActionWidget.Content>
-  1. Select layers you want to extend the text
-2. Click “Simulate translation“
+  1. Select layers you want to extend the text <br/>
+2. Click “Simulate translation“<br/>
 3. See the results on the page:🇷🇺 🇧🇷 Pseudo Translations 🇨🇳 🇮🇳
   </ActionWidget.Content>
   <ActionWidget.Actions>
