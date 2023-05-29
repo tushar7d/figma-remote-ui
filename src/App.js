@@ -5,6 +5,10 @@ import * as Icons from '@revolut/icons'
 import Linter from './Linter'
 import Resources from './Resources'
 import Home from './Home'
+import Generator from './SubApps/Generator'
+import Translator from './SubApps/Translator'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
   const [tab, setTab] = useState('home')
   const onCancel = () => {
@@ -30,7 +34,15 @@ function App() {
         {(() => {
         switch (tab) {
           case 'home':
-            return <Home />
+            return (<BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="generator" element={<Generator />} />
+                <Route path="translator" element={<Translator />} />
+                  
+               
+              </Routes>
+            </BrowserRouter>)
           case 'linter':
             return <Linter />
           case 'resources':
